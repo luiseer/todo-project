@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "squelize"
+  ],
+  "author": "Luis Estrada",
+  "license": "ISC"
+}
