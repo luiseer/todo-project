@@ -18,14 +18,17 @@
 // Install cors library (npm i cors)
 // app.use(cors())
 
-const express = require('express')
-const { sequelize } = require('./utils/database')
+const express = require('express');
+const { Todos } = require('./models/todo.model');
+// const { todosRouter } = require('./routes/todos.routes')
+const { sequelize } = require('./utils/database');
+const app = express()
 
-const app =  express()
+
 
 app.use(express.json())
 
-app.use('/api/v1/todos', todosRoute)
+// app.use('/api/v1/todos', todosRouter)
 
 sequelize
     .authenticate()
@@ -36,10 +39,10 @@ sequelize
 
 sequelize
     .sync()
-    .then(()=> console.log('Database Sync... ok'))
+    .then(() => console.log('Database Sync... ok'))
     .catch(error => (error))
 
-    
+
 app.listen(4000, () => {
     console.log('API Runing');
 })
