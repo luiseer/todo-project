@@ -1,7 +1,7 @@
 const { Todos } = require("../models/todo.model");
 
 
-exports.getAllTodos = async (req, res) => {
+exports.getAllToDos = async (req, res) => {
     try {
         const todosDb = await Todos.findAll({where: {starus: 'active'}})
         res.status(200).json({
@@ -10,6 +10,37 @@ exports.getAllTodos = async (req, res) => {
                 todosDb
             }
         })        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.getToDosById = async (req, res) =>{
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.createToDo = async (req, res) =>{
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.updateToDo = async (req, res) =>{
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+exports.deleteToDo = async (req, res) =>{
+    try {
+        
     } catch (error) {
         console.log(error);
     }

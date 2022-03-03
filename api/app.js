@@ -20,6 +20,8 @@
 
 const express = require('express');
 const { Todos } = require('./models/todo.model');
+const { toDosRouter } = require('./routes/todos.routes');
+
 
 const { sequelize } = require('./utils/database');
 const app = express()
@@ -27,7 +29,7 @@ app.use(express.json())
 
 
 
-app.use('/api/v1/todos', todosRouter)
+app.use('/api/v1/todos', toDosRouter)
 
 sequelize
     .authenticate()
