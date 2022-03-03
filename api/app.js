@@ -20,15 +20,14 @@
 
 const express = require('express');
 const { Todos } = require('./models/todo.model');
-// const { todosRouter } = require('./routes/todos.routes')
+
 const { sequelize } = require('./utils/database');
 const app = express()
-
-
-
 app.use(express.json())
 
-// app.use('/api/v1/todos', todosRouter)
+
+
+app.use('/api/v1/todos', todosRouter)
 
 sequelize
     .authenticate()

@@ -1,5 +1,4 @@
 const { Todos } = require("../models/todo.model");
-const { filterObj } = require("../utils/filterObj");
 
 
 exports.getAllTodos = async (req, res) => {
