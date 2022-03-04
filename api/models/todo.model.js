@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 
 const { sequelize } = require('../utils/database')
 
-const ToDos = sequelize.define('todo', {
+const ToDo = sequelize.define('todo', {
     id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
@@ -23,4 +23,4 @@ const ToDos = sequelize.define('todo', {
         defaultValue: 'active'
     }
 })
-module.exports = { ToDos }
+module.exports = { ToDo }

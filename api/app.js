@@ -12,21 +12,21 @@
 // Use the model to interact with the controller functions
 
 // Must structure project with routes, controllers and models folders (utils)
-
+ 
 // IMPORTANT: Prettier format
 
 // Install cors library (npm i cors)
-// app.use(cors())
 
 const express = require('express');
+const cors = require('cors')
 const { Todos } = require('./models/todo.model');
 const { toDosRouter } = require('./routes/todos.routes');
 
 
 const { sequelize } = require('./utils/database');
 const app = express()
+app.use(cors())
 app.use(express.json())
-
 
 
 app.use('/api/v1/todos', toDosRouter)
@@ -44,6 +44,6 @@ sequelize
     .catch(error => (error))
 
 
-app.listen(4000, () => {
+app.listen(4001, () => {
     console.log('API Runing');
 })
