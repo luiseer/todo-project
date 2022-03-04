@@ -4,7 +4,7 @@ const {
   getAllToDos,
   getToDosById,
   createToDo,
-  updateToDo,
+  updateToDoPatch,
   deleteToDo
 } = require('../controllers/todo.controller');
 
@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/', getAllToDos);
 router.get('/:id', getToDosById);
 router.post('/', createToDo);
-router.patch('/:id', updateToDo);
+router.patch('/:id', updateToDoPatch);
 router.delete('/:id', deleteToDo);
 
 module.exports = { toDosRouter: router };
