@@ -44,6 +44,6 @@ sequelize
     .catch(error => (error))
 
 
-app.listen(4001, () => {
+app.listen(4000, () => {
     console.log('API Runing');
 })
