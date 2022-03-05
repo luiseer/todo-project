@@ -23,7 +23,7 @@ const App = () => {
 		const res = await axios.get('http://localhost:4000/api/v1/todos');
 		const resTodos = res.data;
 		console.log(resTodos);
-		setTodos(resTodos);
+		setTodos(resTodos.data.todosDb);
 	};
 
 	const editTodo = async (id, newContent) => {
@@ -51,15 +51,17 @@ const App = () => {
 
 		setTodos(prevState => {
 			const currentTodos = prevState;
-
 			const updatedTodos = currentTodos.filter(todo => +todo.id !== +id);
-
 			return [...updatedTodos];
 		});
 	};
 
 	// When component is mounted, fetch todos
 	useEffect(() => {
+		if (!fetchTodos) {
+			console.log('no todos');
+			return
+		}
 		fetchTodos();
 	}, []);
 
