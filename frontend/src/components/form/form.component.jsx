@@ -7,7 +7,7 @@ import classes from './form.styles.module.css';
 
 const Form = ({ onAddTodo }) => {
 	// State
-	const [todo, setTodo] = useState('');
+	const [todo, setTodo] = useState();
 	const [showError, setShowError] = useState(false);
 
 	const onSubmitHandler = async event => {
@@ -21,9 +21,10 @@ const Form = ({ onAddTodo }) => {
 
 		// Send data to App.js
 		const newTodo = {
-			id: Math.floor(Math.random() * 1000),
+			// id: Math.floor(Math.random() * 1000),
 			content: todo,
 		};
+		console.log(newTodo);
 
 		onAddTodo(newTodo);
 		setTodo('');

@@ -19,7 +19,6 @@
 
 const express = require('express');
 const cors = require('cors')
-const { Todos } = require('./models/todo.model');
 const { toDosRouter } = require('./routes/todos.routes');
 
 

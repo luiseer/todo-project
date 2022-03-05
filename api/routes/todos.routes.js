@@ -11,7 +11,6 @@ const {
 const router = express.Router();
 
 router.get('/', getAllToDos);
-router.get('/:id', getToDosById);
 router.post('/', createToDo);
 router.patch('/:id', updateToDoPatch);
 router.delete('/:id', deleteToDo);

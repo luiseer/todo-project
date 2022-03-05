@@ -14,7 +14,7 @@ const App = () => {
 
 	const addTodo = async todo => {
 		await axios.post(`http://localhost:4000/api/v1/todos`, {
-			content: todos.data
+			content: todo
 		}); // req.body.content
 		setTodos(prevState => console.log([...prevState, todo]));
 	};
@@ -25,7 +25,7 @@ const App = () => {
 		const res = await axios.get('http://localhost:4000/api/v1/todos');
 		const resTodos = res.data;
 		console.log(resTodos);
-		setTodos(resTodos.data.todosDb);
+		setTodos(resTodos.data.allToDos);
 	};
 
 	const editTodo = async (id, newContent) => {
@@ -65,6 +65,7 @@ const App = () => {
 			return
 		}
 		fetchTodos();
+		addTodo()
 	}, []);
 
 	return (

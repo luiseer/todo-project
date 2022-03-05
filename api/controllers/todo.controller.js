@@ -4,34 +4,11 @@ const { filterObj } = require('../utils/filterObj');
 
 exports.getAllToDos = async (req, res) => {
     try {
-        const todosDb = await ToDo.findAll({ where: { status: 'active' } })
+        const allToDos = await ToDo.findAll({ where: { status: 'active' } })
         res.status(200).json({
             status: 'succes',
             data: {
-                todosDb
-            }
-        })
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-exports.getToDosById = async (req, res) => {
-    try {
-        const { id } = req.params
-        const todo = await ToDo.findOne({ where: { id: id, status: 'active' } })
-
-        if (!todo) {
-            res.status(404).json({
-                status: 'error',
-                message: 'No todo find with the given ID'
-            })
-            return
-        }
-        res.status(200).json({
-            status: 'success',
-            dara: {
-                todo
+                allToDos
             }
         })
     } catch (error) {
@@ -43,20 +20,11 @@ exports.createToDo = async (req, res) => {
     try {
         const { content } = req.body
         const newToDo = await ToDo.create({
-            content
+            content: content
         })
-        if (!newToDo) {
-            res.status(404).json({
-                status: 'error',
-                message: 'check your content'
-            })
-            return
-        }
         res.status(201).json({
             status: 'success',
-            data: {
-                newToDo
-            }
+            data: { newToDo }
         })
     } catch (error) {
         console.log(error);
@@ -90,19 +58,18 @@ exports.deleteToDo = async (req, res) => {
         const { id } = req.params
 
         const todo = await ToDo.findOne({
-            where: id, status: 'active'
+            where: { id: id, status: 'active' }
         })
 
         if (!todo) {
             res.status(404).json({
                 status: 'error',
-                message:'invalid ID'
+                message: 'invalid ID'
             })
             return
         }
-
-        await todo.update({status: 'bye todo'})
-        res.status(204).json({status: 'success'})
+        await todo.update({ status: 'delete' })
+        res.status(204).json({ status: 'success' })
 
     } catch (error) {
         console.log(error);
