@@ -41,9 +41,8 @@ exports.getToDosById = async (req, res) => {
 
 exports.createToDo = async (req, res) => {
     try {
-        const { title, content } = req.body
+        const { content } = req.body
         const newToDo = await ToDo.create({
-            title,
             content
         })
         if (!newToDo) {

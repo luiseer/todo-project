@@ -7,17 +7,19 @@ import TodoList from './components/todo-list/todo-list.component';
 
 import './App.css';
 
+
 const App = () => {
 	// State
 	const [todos, setTodos] = useState([]);
 
 	const addTodo = async todo => {
 		await axios.post(`http://localhost:4000/api/v1/todos`, {
-			content: todo.content,
+			content: todo.data
 		}); // req.body.content
-
-		setTodos(prevState => [...prevState, todo]);
+		setTodos(prevState => console.log([...prevState, todo]));
 	};
+
+	//prevState => [...prevState, todo]
 
 	const fetchTodos = async () => {
 		const res = await axios.get('http://localhost:4000/api/v1/todos');
