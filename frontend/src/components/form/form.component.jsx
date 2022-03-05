@@ -20,9 +20,9 @@ const Form = ({ onAddTodo }) => {
 		}
 
 		// Send data to App.js
-		const newTodo = {
+		 const newTodo = {
 			// id: Math.floor(Math.random() * 1000),
-			content: todo,
+			content: todo
 		};
 		console.log(newTodo);
 

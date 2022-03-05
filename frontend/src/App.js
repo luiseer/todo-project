@@ -14,9 +14,10 @@ const App = () => {
 
 	const addTodo = async todo => {
 		await axios.post(`http://localhost:4000/api/v1/todos`, {
-			content: todo
+			content: todo.content
 		}); // req.body.content
-		setTodos(prevState => console.log([...prevState, todo]));
+		fetchTodos()
+		//  setTodos(prevState => [...prevState, todo]);
 	};
 
 	//prevState => [...prevState, todo]
@@ -29,7 +30,7 @@ const App = () => {
 	};
 
 	const editTodo = async (id, newContent) => {
-		await axios.patch(`http://localhost:4000/api/v1/todos`, {
+		await axios.patch(`http://localhost:4000/api/v1/todos/${id}`, {
 			content: newContent,
 		});
 
@@ -49,7 +50,7 @@ const App = () => {
 	};
 
 	const deleteTodo = async id => {
-		await axios.delete(`http://localhost:4000/api/v1/todos`);
+		await axios.delete(`http://localhost:4000/api/v1/todos/${id}`);
 
 		setTodos(prevState => {
 			const currentTodos = prevState;
@@ -60,12 +61,7 @@ const App = () => {
 
 	// When component is mounted, fetch todos
 	useEffect(() => {
-		if (!fetchTodos) {
-			console.log('no todos');
-			return
-		}
 		fetchTodos();
-		addTodo()
 	}, []);
 
 	return (
