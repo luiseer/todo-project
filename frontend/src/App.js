@@ -14,7 +14,7 @@ const App = () => {
 
 	const addTodo = async todo => {
 		await axios.post(`http://localhost:4000/api/v1/todos`, {
-			content: todo.data
+			content: todos.data
 		}); // req.body.content
 		setTodos(prevState => console.log([...prevState, todo]));
 	};

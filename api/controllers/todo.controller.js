@@ -48,7 +48,7 @@ exports.createToDo = async (req, res) => {
         if (!newToDo) {
             res.status(404).json({
                 status: 'error',
-                message: 'No create todo check your title and content'
+                message: 'check your content'
             })
             return
         }
@@ -67,28 +67,44 @@ exports.updateToDoPatch = async (req, res) => {
     try {
         const { id } = req.params;
         const data = filterObj(req.body, 'title', 'content');
-        const todo = await ToDo.findOne({where: {id: id, status: 'active'}})
+        const todo = await ToDo.findOne({ where: { id: id, status: 'active' } })
         if (!todo) {
             res.status(404).json({
-              status: 'error',
-              message: 'Cant update post, invalid ID'
+                status: 'error',
+                message: 'invalid ID'
             });
             return;
-          }
+        }
 
         await todo.update({ ...data });
-        res.status(201).json({status: 'success'})
-        
-        
+        res.status(201).json({ status: 'success' })
+
+
     } catch (error) {
         console.log(error);
     }
 }
 
 exports.deleteToDo = async (req, res) => {
- try {
-     
- } catch (error) {
-     console.log(error);
- }
+    try {
+        const { id } = req.params
+
+        const todo = await ToDo.findOne({
+            where: id, status: 'active'
+        })
+
+        if (!todo) {
+            res.status(404).json({
+                status: 'error',
+                message:'invalid ID'
+            })
+            return
+        }
+
+        await todo.update({status: 'bye todo'})
+        res.status(204).json({status: 'success'})
+
+    } catch (error) {
+        console.log(error);
+    }
 }
